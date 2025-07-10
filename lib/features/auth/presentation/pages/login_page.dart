@@ -1,4 +1,5 @@
 import 'package:blogapp/core/theme/app_pallete.dart';
+import 'package:blogapp/features/auth/presentation/pages/signup_page.dart';
 import 'package:blogapp/features/auth/presentation/widgets/auth_field.dart';
 import 'package:blogapp/features/auth/presentation/widgets/auth_gradient_button.dart';
 import 'package:flutter/material.dart';
@@ -48,19 +49,25 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               const AuthGradientButton(buttonText: "Sign In"),
               const SizedBox(height: 20),
-              RichText(
-                text: TextSpan(
-                  text: "Don't have an account?",
-                  style: Theme.of(context).textTheme.titleMedium,
-                  children: [
-                    TextSpan(
-                      text: " Sign Up",
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: AppPallete.gradient2,
-                        fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context, SignUpPage.route());
+                },
+                child: RichText(
+                  text: TextSpan(
+                    text: "Don't have an account?",
+                    style: Theme.of(context).textTheme.titleMedium,
+                    children: [
+                      TextSpan(
+                        text: " Sign Up",
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              color: AppPallete.gradient2,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
