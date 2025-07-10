@@ -4,6 +4,7 @@ class AuthField extends StatelessWidget {
   final String hintText;
   final TextEditingController controller;
   final bool isObscureText;
+
   const AuthField({
     super.key,
     required this.hintText,
@@ -14,14 +15,20 @@ class AuthField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(hintText: hintText),
+      controller: controller,
+      obscureText: isObscureText,
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: OutlineInputBorder(),
+        filled: true,
+        fillColor: Colors.black12,
+      ),
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value == null || value.isEmpty) {
           return "$hintText is missing!";
         }
         return null;
       },
-      obscureText: isObscureText,
     );
   }
 }
